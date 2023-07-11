@@ -22,10 +22,8 @@ use holochain_client::{AdminWebsocket, InstallAppPayload, ZomeCall, AgentPubKey}
 use menu::build_menu;
 use tauri::{Manager, WindowBuilder};
 
-const APP_ID: &str = "replace-me";
+const APP_ID: &str = "Word Condenser";
 const PASSWORD: &str = "pass";
-// replace-me -- optional: You may want to put a network seed here or read it secretly from an environment variable
-const NETWORK_SEED: Option<String> = None;
 
 
 mod errors;
@@ -158,7 +156,9 @@ pub async fn launch(
         .await
         .map_err(|e| AppError::ConductorError(e))?;
 
-    install_app_if_necessary(NETWORK_SEED, &mut admin_ws).await?;
+    let network_seed = uuid::Uuid::new_v4();
+
+    install_app_if_necessary(Some(network_seed.to_string()), &mut admin_ws).await?;
 
     Ok((conductor, app_port))
 }
@@ -180,9 +180,8 @@ pub async fn install_app_if_necessary(
         let agent_key = admin_ws.generate_agent_pub_key().await
             .map_err(|e| AppError::ConductorApiError(e))?;
 
-        // unpack happ here
-        // CHANGE.ME
-        let app_bundle = AppBundle::decode(include_bytes!("../../pouch/talking-stickies_0.3.0-beta-dev.8_2.happ"))
+        // replace-me
+        let app_bundle = AppBundle::decode(include_bytes!("../../pouch/word-condenser.happ"))
             .map_err(|e| AppError::AppBundleError(e))?;
 
         admin_ws
