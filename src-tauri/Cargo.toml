@@ -1,7 +1,7 @@
 [package]
 name = "word-condenser-kangaroo"
-version = "0.0.0"
-description = "A Tauri App"
+version = "0.1.1"
+description = "A Holochain App to collectively condense latent [term that yet needs to be condensed] dissolved in the grammatical space of human collectives."
 authors = ["you"]
 license = ""
 repository = ""

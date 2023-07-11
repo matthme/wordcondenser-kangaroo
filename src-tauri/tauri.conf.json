@@ -6,7 +6,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "Word Condenser (Holochain Beta 2)",
+    "productName": "Word Condenser Beta 2",
     "version": "0.1.1"
   },
   "tauri": {
@@ -20,7 +20,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "word-condenser-0.2",
+      "identifier": "word-condenser-hc-0.2",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
